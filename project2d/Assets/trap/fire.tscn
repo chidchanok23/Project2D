@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cujcjl5yf2rev"]
+
+[ext_resource type="Script" path="res://Assets/trap/fire.gd" id="1_0811y"]
+[ext_resource type="Texture2D" uid="uid://bfga5bym215l4" path="res://Assets/trap/On fire.png" id="1_pmab3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0811y"]
+atlas = ExtResource("1_pmab3")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t6l8"]
+atlas = ExtResource("1_pmab3")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqeo3"]
+atlas = ExtResource("1_pmab3")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nya7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0811y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t6l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqeo3")
+}],
+"loop": true,
+"name": &"On",
+"speed": 10.0
+}]
+
+[node name="Fire" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_0811y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nya7r")
+animation = &"On"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-0.25, -2.75)
+polygon = PackedVector2Array(0.25, -14.25, -4.75, -5.75, -4.75, -0.75, -7.25, 2.75, -7.25, 17.75, 7.75, 17.75, 7.75, 2.75, 5.25, -0.75, 5.25, -6.25)

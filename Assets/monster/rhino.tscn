@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://ca6ihvujtttdl"]
+
+[ext_resource type="Texture2D" uid="uid://3fxqe870cyd" path="res://Assets/monster/run rhino.png" id="1_nf33p"]
+[ext_resource type="Script" uid="uid://ckc1vbshf1x5s" path="res://Assets/monster/rhino.gd" id="1_picid"]
+[ext_resource type="PackedScene" uid="uid://chxu6p5655fvw" path="res://Assets/Spritesheet/damage_zone.tscn" id="2_picid"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf33p"]
+atlas = ExtResource("1_nf33p")
+region = Rect2(0, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_picid"]
+atlas = ExtResource("1_nf33p")
+region = Rect2(52, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u462e"]
+atlas = ExtResource("1_nf33p")
+region = Rect2(104, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht5g4"]
+atlas = ExtResource("1_nf33p")
+region = Rect2(156, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jykke"]
+atlas = ExtResource("1_nf33p")
+region = Rect2(208, 0, 52, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n36qf"]
+atlas = ExtResource("1_nf33p")
+region = Rect2(260, 0, 52, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udauw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf33p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_picid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u462e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ht5g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jykke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n36qf")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgrr0"]
+radius = 14.0
+height = 54.0
+
+[node name="Rhino" type="Node2D"]
+script = ExtResource("1_picid")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_udauw")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.0991074
+
+[node name="DamageZone" parent="." instance=ExtResource("2_picid")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+position = Vector2(0, -14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cgrr0")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -15)
+target_position = Vector2(27, 0)
+collision_mask = 3
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -15)
+target_position = Vector2(-27, 0)
+collision_mask = 3

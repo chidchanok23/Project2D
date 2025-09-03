@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://beb4387vdpn7n"]
+
+[ext_resource type="Script" uid="uid://citg67mwcvgbk" path="res://Assets/Scene/AudioManager.gd" id="1_ifi3b"]
+[ext_resource type="AudioStream" uid="uid://pkwkaugv1c60" path="res://Assets/FX/jump.wav" id="2_kgyti"]
+[ext_resource type="AudioStream" uid="uid://wevxfqyo66xm" path="res://Assets/FX/pickupCoin.wav" id="3_7m44p"]
+[ext_resource type="AudioStream" uid="uid://bkyabx3pkylab" path="res://Assets/FX/roblox-tah.mp3" id="4_71rku"]
+[ext_resource type="AudioStream" uid="uid://c04eiy2h0xrfk" path="res://Assets/FX/mixkit-quick-positive-video-game-notification-interface-265.wav" id="5_m4yjx"]
+[ext_resource type="AudioStream" uid="uid://ca4stykqygtht" path="res://Assets/FX/mixkit-completion-of-a-level-2063.wav" id="6_jk6be"]
+[ext_resource type="AudioStream" uid="uid://c01mijkilqf7r" path="res://Assets/FX/急襲 (online-audio-converter.com).wav" id="7_kgyti"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_ifi3b")
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kgyti")
+
+[node name="CoinPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7m44p")
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_71rku")
+
+[node name="RespawnSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_m4yjx")
+volume_db = 5.622
+
+[node name="LevelCompleteSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jk6be")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kgyti")
+volume_db = -1.874

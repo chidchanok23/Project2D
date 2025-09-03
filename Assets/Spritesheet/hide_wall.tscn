@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://byxka24ju3qpw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g6243"]
+
+[node name="hide_wall_left" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -56)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+shape = SubResource("WorldBoundaryShape2D_g6243")

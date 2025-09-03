@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpwd4d0gvy5c1"]
+
+[ext_resource type="Shader" path="res://menu/scroll.gdshader" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://c4vsglt5jnskx" path="res://menu/background.png" id="2_4hy44"]
+[ext_resource type="PackedScene" uid="uid://61fj582fjl0x" path="res://level_01.tscn" id="2_juveg"]
+[ext_resource type="FontFile" uid="uid://dcjcsp47k730a" path="res://Assets/Font/super-mario-bros-nes.otf" id="3_ytr4m"]
+[ext_resource type="Texture2D" uid="uid://ciyyfodijsm4e" path="res://menu/logo.png" id="4_l48gv"]
+[ext_resource type="Script" path="res://menu/menu.gd" id="5_ytr4m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mae5d"]
+shader = ExtResource("1_ouk20")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecwwl"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk3ma"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_ytr4m")
+start_scene = ExtResource("2_juveg")
+
+[node name="Frog" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_mae5d")
+layout_mode = 0
+offset_right = 763.0
+offset_bottom = 429.0
+texture = ExtResource("2_4hy44")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -149.0
+offset_top = 15.0
+offset_right = 178.0
+offset_bottom = 199.0
+grow_horizontal = 2
+texture = ExtResource("4_l48gv")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 148.0
+offset_top = 205.0
+offset_right = 174.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+alignment = 1
+
+[node name="Start_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ytr4m")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ecwwl")
+text = "Start"
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Quit_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ytr4m")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_kk3ma")
+text = "Quit"

@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://daiyn4n5te45u"]
+
+[ext_resource type="Script" path="res://moving_plattform.gd" id="1_3wwrc"]
+[ext_resource type="Texture2D" uid="uid://bpraahcywd47g" path="res://Assets/Spritesheet/Blocks (16 x 16).png" id="2_fge8a"]
+
+[sub_resource type="Curve2D" id="Curve2D_i4lru"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -35, -1, 0, 0, 0, 0, -33, -118, 0, 0, 0, 0, -33, -118, 0, 0, 0, 0, -35, -1)
+}
+point_count = 4
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfcgg"]
+texture = ExtResource("2_fge8a")
+1:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+7:1/0 = 0
+9:1/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+4:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+9:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nm17g"]
+sources/1 = SubResource("TileSetAtlasSource_pfcgg")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqysb"]
+size = Vector2(64, 16)
+
+[node name="MovingPlattform" type="Path2D"]
+curve = SubResource("Curve2D_i4lru")
+script = ExtResource("1_3wwrc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(-35, -1)
+rotates = false
+loop = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PathFollow2D"]
+
+[node name="TileMap" type="TileMap" parent="PathFollow2D/StaticBody2D"]
+tile_set = SubResource("TileSet_nm17g")
+format = 2
+layer_0/tile_data = PackedInt32Array(-3, 65537, 1, -2, 65537, 1, -1, 65537, 1, -4, 65537, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/StaticBody2D"]
+position = Vector2(-32, -8)
+shape = SubResource("RectangleShape2D_rqysb")

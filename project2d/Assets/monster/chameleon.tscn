@@ -1,0 +1,108 @@
+[gd_scene load_steps=15 format=3 uid="uid://cjijl0obnhpaw"]
+
+[ext_resource type="Texture2D" uid="uid://cn3c57y1ykaq4" path="res://Assets/monster/Run (84x38) chama.png" id="1_7ejpv"]
+[ext_resource type="Script" path="res://Assets/monster/chameleon.gd" id="1_p7er1"]
+[ext_resource type="PackedScene" uid="uid://chxu6p5655fvw" path="res://Assets/Spritesheet/damage_zone.tscn" id="2_p7er1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my4d6"]
+atlas = ExtResource("1_7ejpv")
+region = Rect2(42, 0, 42, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oock6"]
+atlas = ExtResource("1_7ejpv")
+region = Rect2(126, 0, 42, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkndy"]
+atlas = ExtResource("1_7ejpv")
+region = Rect2(210, 0, 42, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq7bb"]
+atlas = ExtResource("1_7ejpv")
+region = Rect2(294, 0, 42, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svacc"]
+atlas = ExtResource("1_7ejpv")
+region = Rect2(378, 0, 42, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efm3l"]
+atlas = ExtResource("1_7ejpv")
+region = Rect2(462, 0, 42, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmojs"]
+atlas = ExtResource("1_7ejpv")
+region = Rect2(546, 0, 42, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80ufa"]
+atlas = ExtResource("1_7ejpv")
+region = Rect2(630, 0, 42, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ej0ov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my4d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oock6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkndy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq7bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svacc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efm3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmojs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80ufa")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7er1"]
+radius = 16.0312
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7t6f"]
+radius = 18.0
+height = 36.0
+
+[node name="Chameleon" type="RigidBody2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_p7er1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ej0ov")
+animation = &"run"
+autoplay = "run"
+frame = 1
+frame_progress = 0.0772283
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_p7er1")
+
+[node name="DamageZone" parent="." instance=ExtResource("2_p7er1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_q7t6f")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -15)
+target_position = Vector2(18, 0)
+collision_mask = 3
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -15)
+target_position = Vector2(-18, 0)
+collision_mask = 3
